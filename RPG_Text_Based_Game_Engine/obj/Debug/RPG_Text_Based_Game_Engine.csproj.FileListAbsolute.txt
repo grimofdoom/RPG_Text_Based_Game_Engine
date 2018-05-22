@@ -1,0 +1,7 @@
+c:\users\tim\source\repos\RPG_Text_Based_Game_Engine\RPG_Text_Based_Game_Engine\obj\Debug\RPG_Text_Based_Game_Engine.csprojAssemblyReference.cache
+c:\users\tim\source\repos\RPG_Text_Based_Game_Engine\RPG_Text_Based_Game_Engine\obj\Debug\RPG_Text_Based_Game_Engine.csproj.CoreCompileInputs.cache
+c:\users\tim\source\repos\RPG_Text_Based_Game_Engine\RPG_Text_Based_Game_Engine\bin\Debug\RPG_Text_Based_Game_Engine.exe.config
+c:\users\tim\source\repos\RPG_Text_Based_Game_Engine\RPG_Text_Based_Game_Engine\bin\Debug\RPG_Text_Based_Game_Engine.exe
+c:\users\tim\source\repos\RPG_Text_Based_Game_Engine\RPG_Text_Based_Game_Engine\bin\Debug\RPG_Text_Based_Game_Engine.pdb
+c:\users\tim\source\repos\RPG_Text_Based_Game_Engine\RPG_Text_Based_Game_Engine\obj\Debug\RPG_Text_Based_Game_Engine.exe
+c:\users\tim\source\repos\RPG_Text_Based_Game_Engine\RPG_Text_Based_Game_Engine\obj\Debug\RPG_Text_Based_Game_Engine.pdb
