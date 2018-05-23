@@ -45,6 +45,7 @@
     <Compile Include="Engine\Command.cs" />
     <Compile Include="Engine\EngineCommand.cs" />
     <Compile Include="Engine\GameInstance.cs" />
+    <Compile Include="Engine\Location.cs" />
     <Compile Include="Engine\TextEngine.cs" />
     <Compile Include="Engine\UserInput.cs" />
     <Compile Include="Game\MainGame.cs" />
