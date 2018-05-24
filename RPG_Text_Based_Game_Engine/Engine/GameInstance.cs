@@ -19,9 +19,13 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         private List<String> log = new List<string>();
         private int maxLogLength = 128;
 
+        public List<Location> world = new List<Location>();
+
         public GameInstance() {
+
         }
 
+        //==================== Main Methods =============================
         //Set settings and startup variables here, such as game name
         public abstract void Setup();
 
