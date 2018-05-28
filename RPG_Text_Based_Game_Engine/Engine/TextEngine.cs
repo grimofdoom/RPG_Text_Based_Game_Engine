@@ -15,6 +15,11 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         static int LineSpacer = 6;
         public GameInstance game;
 
+        //Generic character information
+        int spawnX, spawnY = 0;
+        int locX, locY = 0;
+        string mapName;
+
         //These commands are forced into all game screens
         List<Command> engineCommands = new List<Command>() {
             new EngineCommand.ClearScreen(),
@@ -65,7 +70,6 @@ namespace RPG_Text_Based_Game_Engine.Engine {
                         //Actual Gameplay Exists HERE!!!!FINALLY!
                         Console.WriteLine("Game area does not exist yet!");
                     }
-                    
                 }
                 //Game is closing in this section. If [QuitGame] is false, then the game will go back to main menu
                 game.Close();
@@ -128,6 +132,21 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         //Clear screen, adds more things to make it look more full
         public void Clear() {
             Console.Clear();
+        }
+        //Move Player Position
+        public void moveChar(String direction, int spaces)
+        {
+            int x, y = 0;
+            if (direction == "up"){
+                y = 1 * spaces;
+            } else if (direction == "down"){
+                y = -1 * spaces;
+            }
+            if (direction == "left"){
+                x = -1 * spaces;
+            } else if (direction == "right"){
+                x = 1 * spaces;
+            }
         }
         //Check and run if [input] == [engineCommand]
         public bool CheckEngineCommand(String _input) {
