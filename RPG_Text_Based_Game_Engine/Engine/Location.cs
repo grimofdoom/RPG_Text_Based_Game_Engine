@@ -15,24 +15,35 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         //These are activities that can happen when a palyer exits a spot
         //Run is automatically ran, so the first statement should contain a validation for whether it should run
         public List<List<List<Command>>> spotExit = new List<List<List<Command>>>();
+        //These are walls, a player is not allowed to ever enter onto these spots
+        //[Command] will never run or allowed on these spots
+        public List<List<bool>> walls = new List<List<bool>>();
 
         //Add an action to a spot
         public void AddSpot(int x, int y, Command z) {
-            spots[x][y].Add(z);
+            if (!walls[x][y]) {
+                spots[x][y].Add(z);
+            }
         }
 
         //Grab a list of all the possible player interactive commands
         public List<Command> GrabSpot(int x, int y) {
-            List<Command> tempList = spots[x][y];
-            return tempList;
+            if (!walls[x][y]) {
+                return spots[x][y];
+            } else {
+                return new List<Command>();
+            }
         }
 
         //Inspect a spot for all available actions
         public List<Command> Inspect (int x, int y, bool list) {
-            List<Command> inspection = spots[x][y];
-            if (list) {
-                foreach (Command command in inspection) {
-                    Console.WriteLine("[" + x + "]" + "[" + y + "]" + "  " + command.Help);
+            List<Command> inspection = new List<Command>();
+            if (!walls[x][y]) {
+                inspection = spots[x][y];
+                if (list) {
+                    foreach (Command command in inspection) {
+                        Console.WriteLine("[" + x + "]" + "[" + y + "]" + "  " + command.Help);
+                    }
                 }
             }
             return inspection;
@@ -40,13 +51,15 @@ namespace RPG_Text_Based_Game_Engine.Engine {
 
         //Only run this whenever a player enters a spot
         public void OnEnter(int x, int y){
-            List<Command> enter = spotEnter[x][y];
-            foreach (Command command in enter) {
-                if (command.IsActive()){// check if active for automatic run
-                    command.Run();
-                    command.timesRan += 1;
-                    if (command.runOnce) {//if it can only run once, disable after run
-                        command.Inactivate();
+            if (!walls[x][y]) {
+                List<Command> enter = spotEnter[x][y];
+                foreach (Command command in enter) {
+                    if (command.IsActive()) {// check if active for automatic run
+                        command.Run();
+                        command.timesRan += 1;
+                        if (command.runOnce) {//if it can only run once, disable after run
+                            command.Inactivate();
+                        }
                     }
                 }
             }
@@ -54,13 +67,15 @@ namespace RPG_Text_Based_Game_Engine.Engine {
 
         //Only run this whenever player leaves a spot. 
         public void OnExit(int x, int y) {
-            List<Command> exit = spotExit[x][y];
-            foreach (Command command in exit) {
-                if (command.IsActive()) {// check if active for automatic run
-                    command.Run();
-                    command.timesRan += 1;
-                    if (command.runOnce) {//if it can only run once, disable after run
-                        command.Inactivate();
+            if (!walls[x][y]) {
+                List<Command> exit = spotExit[x][y];
+                foreach (Command command in exit) {
+                    if (command.IsActive()) {// check if active for automatic run
+                        command.Run();
+                        command.timesRan += 1;
+                        if (command.runOnce) {//if it can only run once, disable after run
+                            command.Inactivate();
+                        }
                     }
                 }
             }
