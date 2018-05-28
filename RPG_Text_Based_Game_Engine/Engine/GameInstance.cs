@@ -19,8 +19,13 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         private List<String> log = new List<string>();
         private int maxLogLength = 128;
 
+        //List of all in-game locations
         public List<Location> world = new List<Location>();
+        //Player location
+        public int playerX, playerY;
+        public int worldLocation;//Which location is player in, in world?
 
+        //Instantiation process
         public GameInstance() {
 
         }
