@@ -23,7 +23,7 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         public List<Location> world = new List<Location>();
         //Player location
         public int playerX, playerY;
-        public int worldLocation;//Which location is player in, in world?
+        public String worldLocation;//Which location is player in, in world?
 
         //Instantiation process
         public GameInstance() {
@@ -74,6 +74,52 @@ namespace RPG_Text_Based_Game_Engine.Engine {
             Console.WriteLine(message);
             //Attempt to add game message to [log], is not added if it is duplicate of last message
             AddLog(message);
+        }
+
+        //========================================Player Movement===========================================
+        //Move Player Position
+        public void MoveChar(String direction, int spaces) {
+            int currentX = Program.engine.game.playerX;
+            int currentY = Program.engine.game.playerY;
+            int x = 0;
+            int y = 0;
+            if (direction == "up") {
+                y = 1 * spaces;
+            } else if (direction == "down") {
+                y = -1 * spaces;
+            }
+            if (direction == "left") {
+                x = -1 * spaces;
+            } else if (direction == "right") {
+                x = 1 * spaces;
+            }
+            //Continue if new location is NOT a wall
+            if (!FindLocation(worldLocation).walls[currentX + x][currentY + y]) {
+                int newX = currentX + x;
+                int newY = currentY + y;
+                //Perform [OnExit] of current spot
+                FindLocation(worldLocation).OnExit(newX, newY);
+                //Check if the player has teleported/moved to a new location
+                if (Program.engine.game.playerX == currentX && Program.engine.game.playerY == currentY) {
+                    //If player did not teleport
+                    Program.engine.game.playerX = newX;
+                    Program.engine.game.playerY = newY;
+                }
+                //Perform [OnEnter] of new spot
+                //Do NOT use [newX] or [newY] in case the player was teleported, and relook for current location if player teleported
+                FindLocation(worldLocation).OnEnter(Program.engine.game.playerX, Program.engine.game.playerY);
+            }
+        }
+        //Find [location] in [world] using specific [name]. No location should share names, only first of same name will be grabbed
+        //This needs to be fixed later to store current [Location] as an int locatation of [world] list
+        public Location FindLocation(String locationName) {
+            Location location = new Location();
+            foreach (Location loc in world) {
+                if (loc.name == locationName) {
+                    return loc;
+                }
+            }
+            return location;
         }
     }
 }

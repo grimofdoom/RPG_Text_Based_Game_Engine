@@ -12,7 +12,7 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         private bool QuitGame;
         private bool RestartGame;
         private bool playGame;
-        static int LineSpacer = 6;
+        static readonly int LineSpacer = 6;
         public GameInstance game;
 
         public UserInput input;
@@ -142,21 +142,6 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         //Clear screen, adds more things to make it look more full
         public void Clear() {
             Console.Clear();
-        }
-        //Move Player Position
-        public void MoveChar(String direction, int spaces)
-        {
-            int x, y = 0;
-            if (direction == "up"){
-                y = 1 * spaces;
-            } else if (direction == "down"){
-                y = -1 * spaces;
-            }
-            if (direction == "left"){
-                x = -1 * spaces;
-            } else if (direction == "right"){
-                x = 1 * spaces;
-            }
         }
         //Check and run if [input] == [engineCommand]
         public bool CheckEngineMainMenuCommand(String _input) {
