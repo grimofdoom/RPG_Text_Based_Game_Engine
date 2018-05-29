@@ -15,14 +15,25 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         static int LineSpacer = 6;
         public GameInstance game;
 
+        public UserInput input;
+
         //These commands are forced into all game screens
-        List<Command> engineCommands = new List<Command>() {
+        List<Command> engineMainMenuCommands = new List<Command>() {
             new EngineCommand.ClearScreen(),
             new EngineCommand.LoadGame(),
             new EngineCommand.QuitGame(),
             new EngineCommand.RestartGame(),
             new EngineCommand.SaveGame(),
-            new EngineCommand.ListEngineCommands()
+            new EngineCommand.ListEngineCommands(),
+            new EngineCommand.PlayGame()
+        };
+
+        //These commands are in normal game play
+        List<Command> engineGamePlayCommands = new List<Command>() {
+            new EngineCommand.QuitGame(),
+            new EngineCommand.SaveGame(),
+            new EngineCommand.ClearScreen(),
+            new EngineCommand.Inspect()
         };
 
         public TextEngine() {
@@ -52,18 +63,17 @@ namespace RPG_Text_Based_Game_Engine.Engine {
                 while (!RestartGame) {
                     //Main/home menu
                     if (!playGame) {
-                        UserInput input = new UserInput(" ");
+                        input = new UserInput(" ");
                         SpaceLines(2);
                         ListEngineCommands();
                         SpaceLines(2);
                         input.ForcedInput("Please enter what you want to do: ");
                         //If an [engineCommand] is not ran, do a check across found local commands
-                        if (!CheckEngineCommand(input.Input())) {
+                        if (!CheckEngineMainMenuCommand(input.Input())) {
 
                         }
                     } else {
-                        //Actual Gameplay Exists HERE!!!!FINALLY!
-                        Console.WriteLine("Game area does not exist yet!");
+                        input.ForcedInput("#");
                     }
                 }
                 //Game is closing in this section. If [QuitGame] is false, then the game will go back to main menu
@@ -76,6 +86,11 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         }
 
         // =================================== Main Functions ===================================
+        //Plays the game
+        public void PlayGame() {
+            Console.Clear();
+            playGame = true;
+        }
         //Restart the game, same as going back to main menu. This is a safe method with saving, if enabled.
         public void Restart() {
             Console.Clear();
@@ -144,8 +159,8 @@ namespace RPG_Text_Based_Game_Engine.Engine {
             }
         }
         //Check and run if [input] == [engineCommand]
-        public bool CheckEngineCommand(String _input) {
-            foreach (Command action in engineCommands) {
+        public bool CheckEngineMainMenuCommand(String _input) {
+            foreach (Command action in engineMainMenuCommands) {
                 foreach (String activator in action.Activators) {
                     if (_input == activator) {
                         action.Run();
@@ -157,7 +172,7 @@ namespace RPG_Text_Based_Game_Engine.Engine {
         }
         //Lists all engine commands
         public void ListEngineCommands() {
-            foreach (Command action in engineCommands) {
+            foreach (Command action in engineMainMenuCommands) {
                 Console.WriteLine(action.Activators[0] + " : " + action.Help);
             }
         }

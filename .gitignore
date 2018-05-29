@@ -5,3 +5,6 @@
 .vs/RPG_Text_Based_Game_Engine/v15/Server/sqlite3/storage.ide-wal
 .vs/RPG_Text_Based_Game_Engine/v15/Server/sqlite3/storage.ide
 .vs/RPG_Text_Based_Game_Engine/v15/Server/sqlite3/storage.ide-wal
+*.exe
+RPG_Text_Based_Game_Engine/bin/Debug/RPG_Text_Based_Game_Engine.pdb
+RPG_Text_Based_Game_Engine/obj/Debug/RPG_Text_Based_Game_Engine.pdb
