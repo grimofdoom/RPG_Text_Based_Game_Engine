@@ -1,10 +1,7 @@
-
-.vs/RPG_Text_Based_Game_Engine/DesignTimeBuild/.dtbcache
-.vs/RPG_Text_Based_Game_Engine/v15/.suo
-.vs/RPG_Text_Based_Game_Engine/v15/Server/sqlite3/storage.ide-shm
-.vs/RPG_Text_Based_Game_Engine/v15/Server/sqlite3/storage.ide-wal
-.vs/RPG_Text_Based_Game_Engine/v15/Server/sqlite3/storage.ide
-.vs/RPG_Text_Based_Game_Engine/v15/Server/sqlite3/storage.ide-wal
+.vs
 *.exe
-RPG_Text_Based_Game_Engine/bin/Debug/RPG_Text_Based_Game_Engine.pdb
-RPG_Text_Based_Game_Engine/obj/Debug/RPG_Text_Based_Game_Engine.pdb
+RPG_Text_Based_Game_Engine/bin
+RPG_Text_Based_Game_Engine/obj
+RPG_Text_Based_Game_Engine/Properties
+RPG_Text_Based_Game_Engine/App.config
+RPG_Text_Based_Game_Engine/RPG_Text_Based_Game_Engine.csproj
