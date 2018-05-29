@@ -1,7 +1,7 @@
-.vs
+.vs/
 *.exe
-RPG_Text_Based_Game_Engine/bin
-RPG_Text_Based_Game_Engine/obj
-RPG_Text_Based_Game_Engine/Properties
-RPG_Text_Based_Game_Engine/App.config
+RPG_Text_Based_Game_Engine/bin/
+RPG_Text_Based_Game_Engine/obj/
+RPG_Text_Based_Game_Engine/Properties/
+RPG_Text_Based_Game_Engine/App.config/
 RPG_Text_Based_Game_Engine/RPG_Text_Based_Game_Engine.csproj
